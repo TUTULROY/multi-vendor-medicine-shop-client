@@ -1,0 +1,39 @@
+[
+    {
+        "_id":"1",
+      "category_name": "Tablet",
+      "image_url": "https://i.postimg.cc/k5ygZ2CL/Tablets-1-1.jpg",
+      "number_of_medicines": 120
+    },
+    {
+        "_id":"2",
+      "category_name": "Syrup",
+      "image_url": "https://i.postimg.cc/fydL8BRf/remocof-syrup-100ml-1-pc.jpg",
+      "number_of_medicines": 80
+    },
+    {
+        "_id":"3",
+      "category_name": "Capsule",
+      "image_url": "https://i.postimg.cc/fbgRZ63v/images23.jpg",
+      "number_of_medicines": 100
+    },
+    {
+        "_id":"4",
+      "category_name": "Injection",
+      "image_url": "https://i.postimg.cc/MTV2441H/img12.jpg",
+      "number_of_medicines": 60
+    },
+    {
+        "_id":"5",
+      "category_name": "Saline",
+      "image_url": "https://i.postimg.cc/vBdS1m68/imaeee.jpg",
+      "number_of_medicines": 30
+    },
+    {
+        "_id":"6",
+      "category_name": "Cream",
+      "image_url": "https://i.postimg.cc/85BXLVhR/istockphoto-818410534-612x612.jpg",
+      "number_of_medicines": 40
+    }
+  ]
+  
