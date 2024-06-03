@@ -1,3 +1,4 @@
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 
@@ -5,11 +6,15 @@ const NavBer = () => {
     const navLinks = <>
      <li><Link to='/'>Home</Link></li>
               <li>
-                <a>Parent</a>
+                <Link to='shop'>Shop</Link>
                 
               </li>
-              <li><a>Item 3</a></li>
-
+              <li><Link to='/dashboard/cart'>
+          
+       <FaShoppingCart className="ml-4"></FaShoppingCart>
+        <div className="badge badge-secondary">+Cart</div>
+      
+      </Link></li>
     </>
     return (
         <div className="navbar bg-base-100">
