@@ -1,18 +1,32 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../hook/useAxiosPublic";
 
-
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const SignUp = () => {
-    const {
-        register,
-        handleSubmit,
-        // watch,
-        // reset,
-        formState: { errors },
-      } = useForm();
+        const {
+            register,
+            handleSubmit,
+            // watch,
+            // reset,
+            formState: { errors },
+        } = useForm();
+        const axiosPublic = useAxiosPublic();
+        const onSubmit = async (data) => {
+            console.log(data)
 
-      const onSubmit = data => console.log(data);
+                const imageFile = { image: data.image[0] };
+                
+                const res = await axiosPublic.post(image_hosting_api, imageFile, {
+                  headers: {
+                    'content-type': 'multipart/form-data'
+                  }
+                });
+                console.log(res.data);
+              
+    };
     return (
         <>
         <Helmet>
@@ -43,6 +57,16 @@ const SignUp = () => {
               </div>
               <div className="form-control">
                 <label className="label">
+                    <span className="label-text"> Role</span>
+                </label>
+              <select defaultValue="user" name="role" {...register("role", {required: true})} className="input input-bordered w-full">
+                <option value="user">user</option>
+                <option>seller</option>
+                      </select>
+              </div>
+              
+              <div className="form-control">
+                <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
@@ -67,8 +91,8 @@ const SignUp = () => {
                 <label className="label">
                   <span className="label-text">Photo URL</span>
                 </label>
-                <input type="file" {...register("photoURL", {required:true})} placeholder="Photo Url" className="file-input input-bordered"  />
-                {errors.PhotoURL && <span>This field is required</span>}
+                <input type="file" name="photoURL" {...register("photoURL", {required:true})} placeholder="Photo Url" className="file-input input-bordered"  />
+                {errors.photoURL && <span>This field is required</span>}
               </div>
               <div className="form-control mt-6">
                 <input type="submit"  value="Sign Up" className="btn btn-primary" />
