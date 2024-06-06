@@ -6,6 +6,7 @@ import Login from "../Login/Login";
 import CategoryDetails from "../Home/Category/CategoryDetails/CategoryDetails";
 import SignUp from "../Register/SignUp";
 import Shops from "../Shop/Shops";
+import MedicineDetails from "../MedicineDetails/MedicineDetails";
 
 
   const router = createBrowserRouter([
@@ -25,6 +26,10 @@ import Shops from "../Shop/Shops";
          path:"shop",
          element:<Shops></Shops>
 
+       },
+       {
+        path:'/detailsPage/:id',
+        element:<MedicineDetails></MedicineDetails>
        }
       ]
      
