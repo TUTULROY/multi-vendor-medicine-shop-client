@@ -2,10 +2,13 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../hook/useAxiosPublic";
+import useAuth from "../hook/useAuth";
+import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const SignUp = () => {
+    const {createUser, updateUserProfile } = useAuth();
         const {
             register,
             handleSubmit,
@@ -15,22 +18,58 @@ const SignUp = () => {
         } = useForm();
         const axiosPublic = useAxiosPublic();
         const onSubmit = async (data) => {
-            console.log(data)
+            console.log(data); 
 
-                const imageFile = { image: data.image[0] };
+            const imageFile = { image: data.photoURL[0] };
                 
                 const res = await axiosPublic.post(image_hosting_api, imageFile, {
                   headers: {
                     'content-type': 'multipart/form-data'
                   }
                 });
-                console.log(res.data);
+                const photoURL = res.data.data.url;
+                // console.log(res.data);
+            
+            createUser(data.email, data.password, data.role)
+            .then(result =>{
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(data.name, photoURL)
+            .then(()=>{
+              const userInfo = {
+                name : data.name,
+                email: data.email,
+                role: data.role,
+                photoURL
+
+              }
+              axiosPublic.post('/users', userInfo)
+              .then(res =>{
+                if(res.data.insertedId){
+                  console.log('user added to the database')
+                  
+                  Swal.fire({
+                      padding: 'top-end',
+                      icon: 'success',
+                      title: 'your work has been saved',
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+
+                }
+              })
+                // console.log('user profile info updated')
+               
+                
+            })
+            })
+
               
     };
     return (
         <>
         <Helmet>
-            <title>Bistro Boss || Sign Up</title>
+            <title>Multi Vendor Medicine Shop || Sign Up</title>
         </Helmet>
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
@@ -59,8 +98,8 @@ const SignUp = () => {
                 <label className="label">
                     <span className="label-text"> Role</span>
                 </label>
-              <select defaultValue="user" name="role" {...register("role", {required: true})} className="input input-bordered w-full">
-                <option value="user">user</option>
+              <select name="role" {...register("role", {required: true})} className="input input-bordered w-full">
+                <option>user</option>
                 <option>seller</option>
                       </select>
               </div>
