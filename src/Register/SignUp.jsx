@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import useAxiosPublic from "../hook/useAxiosPublic";
 import useAuth from "../hook/useAuth";
 import Swal from "sweetalert2";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const SignUp = () => {
     const {createUser, updateUserProfile } = useAuth();
+    const [showPassword, setShowPassword] = useState(false);
         const {
             register,
             handleSubmit,
@@ -28,7 +31,7 @@ const SignUp = () => {
                   }
                 });
                 const photoURL = res.data.data.url;
-                // console.log(res.data);
+                console.log(res.data);
             
             createUser(data.email, data.password, data.role)
             .then(result =>{
@@ -46,12 +49,11 @@ const SignUp = () => {
               axiosPublic.post('/users', userInfo)
               .then(res =>{
                 if(res.data.insertedId){
-                  console.log('user added to the database')
                   
                   Swal.fire({
                       padding: 'top-end',
                       icon: 'success',
-                      title: 'your work has been saved',
+                      title: 'new user has been saved',
                       showConfirmButton: false,
                       timer: 1500
                   })
@@ -108,8 +110,9 @@ const SignUp = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
+                <div className="relative">
                 <input
-        type="password"
+        type={showPassword ? "text" : "password" }
         {...register("password", {
           required: "Password is required",
           minLength: { value: 6, message: "Password must be at least 6 characters long"
@@ -120,8 +123,14 @@ const SignUp = () => {
             value: /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/,
            message: "Password must contain at least one uppercase letter and one lowercase letter"
           }
-        })} name="password" placeholder="Password" className="input input-bordered"/>
+        })} name="password" placeholder="Password" className="w-full input input-bordered"/>
       {errors.password && <span>{errors.password.message}</span>}
+      <span className="absolute top-4 right-2" onClick={() => setShowPassword(!showPassword)}>
+                    {
+                        showPassword ? <FaEyeSlash />  : <FaEye />
+                    }
+                </span>
+                </div>
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                 </label>

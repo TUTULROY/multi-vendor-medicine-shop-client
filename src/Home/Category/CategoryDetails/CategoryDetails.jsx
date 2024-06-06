@@ -5,6 +5,7 @@ import useMenu from "../../../hook/useMenu";
 const CategoryDetails = () => {
     const categories = ['Tablet'];
     const [menu] =useMenu();
+    console.log(menu)
     const {category} = useParams();
     const initialIndex = categories.indexOf(category);
     const tablet = menu.filter(item => item.category === 'Tablet');

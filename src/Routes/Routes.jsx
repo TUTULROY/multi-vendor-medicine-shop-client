@@ -5,6 +5,7 @@ import Home from "../Home/Home/Home";
 import Login from "../Login/Login";
 import CategoryDetails from "../Home/Category/CategoryDetails/CategoryDetails";
 import SignUp from "../Register/SignUp";
+import Shops from "../Shop/Shops";
 
 
   const router = createBrowserRouter([
@@ -19,7 +20,12 @@ import SignUp from "../Register/SignUp";
         {
           path:"categoryDetails",
           element:<CategoryDetails></CategoryDetails>
-        }
+        },
+       {
+         path:"shop",
+         element:<Shops></Shops>
+
+       }
       ]
      
     },

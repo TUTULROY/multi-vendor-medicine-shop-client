@@ -8,44 +8,44 @@ import useAuth from '../hook/useAuth';
 const Login = () => {
 
    
-    const {signIn} = useAuth;
+    const {signIn} = useAuth();
 
     const navigate = useNavigate();
-    const location = useLocation();
+      const location = useLocation();
+  
+      const from = location?.state || "/"
 
-    const from = location.state?.from?.pathname || "/";
-
-    
-    const handleLogin = event =>{
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
+    const handleLogin = e =>{
+        e.preventDefault();
+        console.log(e.currentTarget);
+        const form = new FormData(e.currentTarget);
+        const email = form.get('email');
+        const password = form.get('password')
         console.log(email, password);
+
+
         signIn(email, password)
         .then(result =>{
-            const user = result.user;
-            console.log(user);
-            Swal.fire({
-                title: "User Login Successful",
-                showClass: {
-                  popup: `
-                    animate__animated
-                    animate__fadeInUp
-                    animate__faster
-                  `
-                },
-                hideClass: {
-                  popup: `
-                    animate__animated
-                    animate__fadeOutDown
-                    animate__faster
-                  `
-                }
-              });
-              navigate(from, {replace: true});
+            if(result.user){
+                Swal.fire({
+                    title: 'Login successfully!',
+                    text: 'Login successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  })
+                navigate(from);
+            }
         })
-    }
+        .catch(error =>{
+            console.error(error);
+            Swal.fire({
+                title: 'Error login!',
+                text: 'Incorrect Email & Password',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+              })
+        })
+        }
 
     
     return (
