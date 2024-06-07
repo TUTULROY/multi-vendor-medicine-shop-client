@@ -3,57 +3,14 @@
         "item_name": "TabX 200",
         "item_generic_name": "TabX",
         "short_description": "TabX 200 - Powerful tablet for everyday use",
-        "image": "tabx_200.jpg",
+        "image": "https://i.postimg.cc/Sxktd7WH/Nifin-200-Tabs.png",
         "category": "Tablet",
         "company": "TechSavvy Inc.",
         "mass_unit": "Mg",
         "per_unit_price": 99.99,
         "discount_percentage": 10
       },
-      {
-        "item_name": "TabPro 5000",
-        "item_generic_name": "TabPro",
-        "short_description": "TabPro 5000 - High-performance tablet for professionals",
-        "image": "tabpro_5000.jpg",
-        "category": "Tablet",
-        "company": "InnovateTech",
-        "mass_unit": "Mg",
-        "per_unit_price": 249.99,
-        "discount_percentage": 15
-      },
-      {
-        "item_name": "SmartTab 10",
-        "item_generic_name": "SmartTab",
-        "short_description": "SmartTab 10 - Sleek and versatile tablet for entertainment",
-        "image": "smarttab_10.jpg",
-        "category": "Tablet",
-        "company": "GadgetGuru",
-        "mass_unit": "Mg",
-        "per_unit_price": 149.99,
-        "discount_percentage": 20
-      },
-      {
-        "item_name": "ProTab Elite",
-        "item_generic_name": "ProTab",
-        "short_description": "ProTab Elite - Premium tablet with advanced features",
-        "image": "protab_elite.jpg",
-        "category": "Tablet",
-        "company": "TechVision",
-        "mass_unit": "Mg",
-        "per_unit_price": 299.99,
-        "discount_percentage": 25
-      },
-      {
-        "item_name": "TabLite 100",
-        "item_generic_name": "TabLite",
-        "short_description": "TabLite 100 - Lightweight and affordable tablet for casual users",
-        "image": "tablite_100.jpg",
-        "category": "Tablet",
-        "company": "EZTech",
-        "mass_unit": "Mg",
-        "per_unit_price": 79.99,
-        "discount_percentage": 10
-      },
+      
       
         {
           "item_name": "Cough Relief Syrup",
