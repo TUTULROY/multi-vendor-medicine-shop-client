@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hook/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hook/useAxiosSecure";
+import useCart from "../hook/useCart";
 
 
 const Shops = () => {
@@ -13,7 +14,8 @@ const Shops = () => {
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
     const location = useLocation();
-    console.log(menu);
+    const [, refetch] = useCart();
+    // console.log(menu);
     // const {_id, item_name, item_generic_name, image, category, company, per_unit_price} = menu;
     const handleAddToCart = (item) =>{
         
@@ -40,6 +42,7 @@ const Shops = () => {
               showConfirmButton: false,
               timer: 1500
             });
+            refetch();
         }
     })
         }

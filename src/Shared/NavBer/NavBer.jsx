@@ -1,25 +1,42 @@
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useCart from "../../hook/useCart";
+import useAuth from "../../hook/useAuth";
 
 
 const NavBer = () => {
+    const [cart] = useCart();
+    const {user, logOut} = useAuth();
+    const handleLogOut = () =>{
+        logOut()
+        .then(() =>{})
+        .catch(error => console.log(error))
+      }
     const navLinks = <>
      <li><Link to='/'>Home</Link></li>
               <li>
                 <Link to='shop'>Shop</Link>
                 
               </li>
-              <li>
-                <Link to='login'>Login</Link>
+              <li className="dropdown">
+                <a className="" href="">
+                <Link >Languages</Link>
+                </a>
+                <div className="dropdown-content z-[1]">
+                <li><a href="">English</a></li>
+                <li><a href="">Spanish</a></li>
+                <li><a href="">France</a></li>
+            </div>
                 
               </li>
-              <li><Link to='/dashboard/cart'>
+              <li><Link to='/'>
           
        <FaShoppingCart className="ml-4"></FaShoppingCart>
-        <div className="badge badge-secondary">+Cart</div>
+        <div className="badge badge-secondary">+{cart.length}</div>
       
       </Link></li>
     </>
+
     return (
         <div className="navbar bg-base-100">
         <div className="navbar-start">
@@ -45,11 +62,11 @@ const NavBer = () => {
            }
           </ul>
         </div>
-        <div className="navbar-end">
+     { user? ( <> <div className="navbar-end">
         <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          <img alt="Tailwind CSS Navbar component" src={user.photoURL || "https://i.postimg.cc/4x2BCp42/tutulroy.jpg"} />
         </div>
       </div>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -57,10 +74,19 @@ const NavBer = () => {
           <a className="justify-between"> Profile</a>
         </li>
         <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        <button onClick={handleLogOut} className="btn"><a>Logout</a></button>
       </ul>
     </div>
         </div>
+        </>
+     ):(
+        <>
+        <li>
+        <Link to='login'>Login</Link>
+        
+      </li></>)
+        
+        }
       </div>
     );
 };

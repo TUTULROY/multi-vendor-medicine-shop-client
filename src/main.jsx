@@ -14,18 +14,18 @@ import { HelmetProvider } from 'react-helmet-async';
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <div className='max-w-screen-xl mx-auto'>
-   <AuthProvider>
-   <QueryClientProvider client={queryClient}>
-  <HelmetProvider>
-  <div className='max-w-screen-xl mx-auto'>
-  <RouterProvider router={router} />
-  </div>
-  </HelmetProvider>
-    </QueryClientProvider>
-   </AuthProvider>
-    </div>
+        <React.StrictMode>
+          <div className='max-w-screen-xl mx-auto'>
+        <AuthProvider>
+        <QueryClientProvider client={queryClient}>
+        <HelmetProvider>
+        <div className='max-w-screen-xl mx-auto'>
+        <RouterProvider router={router} />
+        </div>
+        </HelmetProvider>
+          </QueryClientProvider>
+        </AuthProvider>
+          </div>
    
   </React.StrictMode>,
 )
