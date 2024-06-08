@@ -29,7 +29,7 @@ const NavBer = () => {
             </div>
                 
               </li>
-              <li><Link to='/'>
+              <li><Link to='/dashboard/cart'>
           
        <FaShoppingCart className="ml-4"></FaShoppingCart>
         <div className="badge badge-secondary">+{cart.length}</div>

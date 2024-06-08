@@ -7,6 +7,8 @@ import CategoryDetails from "../Home/Category/CategoryDetails/CategoryDetails";
 import SignUp from "../Register/SignUp";
 import Shops from "../Shop/Shops";
 import MedicineDetails from "../MedicineDetails/MedicineDetails";
+import Dashboard from "../Layouts/Dashboard";
+import Cart from "../Dashboard/Cart/Cart";
 
 
   const router = createBrowserRouter([
@@ -41,6 +43,16 @@ import MedicineDetails from "../MedicineDetails/MedicineDetails";
     {
       path:"/signUp",
       element:<SignUp></SignUp>
+    },
+    {
+      path:'dashboard',
+      element: <Dashboard></Dashboard>,
+      children:[
+        {
+          path:'cart',
+          element:<Cart></Cart>
+        }
+      ]
     }
   ]);
 
