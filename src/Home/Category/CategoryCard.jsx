@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const CategoryCard = ({item}) => {
@@ -11,7 +12,10 @@ const CategoryCard = ({item}) => {
     <h2 className="card-title">{category_name}</h2>
     <p>{number_of_medicines}</p>
     <div className="card-actions">
-      <button className="btn btn-primary">Buy Now</button>
+      <Link to={`categoryDetails/${category_name}`}>
+      <button className="btn btn-primary">{category_name}</button>
+      </Link>
+     
     </div>
   </div>
 </div>

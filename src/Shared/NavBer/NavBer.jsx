@@ -19,6 +19,10 @@ const NavBer = () => {
                 
               </li>
               <li>
+                <Link to='categoryDetails/Tablet'>Category Details</Link>
+                
+              </li>
+              <li>
         <details>
           <summary>
           Languages

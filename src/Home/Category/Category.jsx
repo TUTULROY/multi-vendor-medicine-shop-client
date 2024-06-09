@@ -18,7 +18,7 @@ const Category = () => {
             }
         </div>
         <div className="text-center my-3">
-             <Link to="/categoryDetails"><button className="btn btn-outline border-0 border-b-4 mt-4 ">View Full Now</button></Link>
+             <Link to="/categoryDetails/Tablet"><button className="btn btn-outline border-0 border-b-4 mt-4 ">View Full Now</button></Link>
              </div>
         </div>
     );

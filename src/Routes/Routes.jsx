@@ -22,7 +22,7 @@ import PrivateRoutes from "./PrivateRoutes";
             element:<Home></Home>
         },
         {
-          path:"categoryDetails",
+          path:"categoryDetails/:category",
           element:<CategoryDetails></CategoryDetails>
         },
        {
