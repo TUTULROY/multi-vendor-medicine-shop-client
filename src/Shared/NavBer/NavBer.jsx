@@ -18,17 +18,17 @@ const NavBer = () => {
                 <Link to='shop'>Shop</Link>
                 
               </li>
-              <li className="dropdown">
-                <a className="" href="">
-                <Link >Languages</Link>
-                </a>
-                <div className="dropdown-content z-[1]">
-                <li><a href="">English</a></li>
-                <li><a href="">Spanish</a></li>
-                <li><a href="">France</a></li>
-            </div>
-                
-              </li>
+              <li>
+        <details>
+          <summary>
+          Languages
+          </summary>
+          <ul className="p-2 bg-base-100 rounded-t-none z-10">
+            <li><a>English</a></li>
+            <li><a>French</a></li>
+          </ul>
+        </details>
+      </li>
               <li><Link to='/dashboard/cart'>
           
        <FaShoppingCart className="ml-4"></FaShoppingCart>
@@ -62,8 +62,8 @@ const NavBer = () => {
            }
           </ul>
         </div>
-     { user? ( <> <div className="navbar-end">
-        <div className="dropdown dropdown-end">
+      <div className="navbar-end">
+       {user ? ( <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img alt="Tailwind CSS Navbar component" src={user.photoURL || "https://i.postimg.cc/4x2BCp42/tutulroy.jpg"} />
@@ -80,17 +80,21 @@ const NavBer = () => {
         </li>
         <button onClick={handleLogOut} className="btn"><a>Logout</a></button>
       </ul>
-    </div>
         </div>
-        </>
-     ):(
-        <>
-        <li>
+       ):
+       (
+        
+        <button className="btn btn-primary">
         <Link to='login'>Login</Link>
         
-      </li></>)
+      </button>
+      )
+       }
         
-        }
+    
+        </div>
+        
+     
       </div>
     );
 };

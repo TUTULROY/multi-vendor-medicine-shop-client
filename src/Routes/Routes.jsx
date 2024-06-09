@@ -9,6 +9,7 @@ import Shops from "../Shop/Shops";
 import MedicineDetails from "../MedicineDetails/MedicineDetails";
 import Dashboard from "../Layouts/Dashboard";
 import Cart from "../Dashboard/Cart/Cart";
+import PrivateRoutes from "./PrivateRoutes";
 
 
   const router = createBrowserRouter([
@@ -46,7 +47,7 @@ import Cart from "../Dashboard/Cart/Cart";
     },
     {
       path:'dashboard',
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
       children:[
         {
           path:'cart',

@@ -6,6 +6,7 @@ import useAuth from "../hook/useAuth";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -16,7 +17,7 @@ const SignUp = () => {
             register,
             handleSubmit,
             // watch,
-            // reset,
+            reset,
             formState: { errors },
         } = useForm();
         const axiosPublic = useAxiosPublic();
@@ -49,7 +50,7 @@ const SignUp = () => {
               axiosPublic.post('/users', userInfo)
               .then(res =>{
                 if(res.data.insertedId){
-                  
+                  reset();
                   Swal.fire({
                       padding: 'top-end',
                       icon: 'success',
@@ -73,12 +74,11 @@ const SignUp = () => {
         <Helmet>
             <title>Multi Vendor Medicine Shop || Sign Up</title>
         </Helmet>
-        <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Sign Up</h1>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-          </div>
+        <div className="hero min-h-screen bg-base-200 py-3">
+        <div className="">
+          <div className="text-center">
+            <h1 className="text-5xl font-bold py-9">Sign Up</h1>
+         </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
@@ -146,7 +146,8 @@ const SignUp = () => {
                 <input type="submit"  value="Sign Up" className="btn btn-primary" />
               </div>
             </form>
-            <p className="px-6"><small>New Here? <Link to="/login">Already have an account</Link></small></p>
+            <p className="px-6 text-center text-2xl "><small>New Here? <Link className="text-blue-400" to="/login">Already have an account</Link></small></p>
+            <SocialLogin></SocialLogin>
             
           </div>
         </div>
