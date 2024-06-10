@@ -12,7 +12,8 @@ import Cart from "../Dashboard/Cart/Cart";
 import PrivateRoutes from "./PrivateRoutes";
 import AllUser from "../component/AllUser";
 import UpdateProfile from "../component/UpdateProfile";
-import AdminRoutes from "./AdminRoutes";
+
+import Payment from "../Dashboard/Payment/Payment";
 
 
   const router = createBrowserRouter([
@@ -61,8 +62,12 @@ import AdminRoutes from "./AdminRoutes";
           element:<Cart></Cart>
         },
         {
+          path:'payment',
+          element:<Payment></Payment>
+        },
+        {
           path:'allUser',
-          element:<AdminRoutes><AllUser></AllUser></AdminRoutes>
+          element:<AllUser></AllUser>
         }
       ]
     }

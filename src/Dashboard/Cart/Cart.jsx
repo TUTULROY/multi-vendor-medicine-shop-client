@@ -3,6 +3,7 @@ import useCart from "../../hook/useCart";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import useAuth from "../../hook/useAuth";
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const [cart, refetch] = useCart();
@@ -74,7 +75,12 @@ const Cart = () => {
             <div className="flex justify-evenly">
                 <h2 className="text-4xl"> Items: {cart.length}</h2>
                 <h2 className="text-4xl"> Total Price: ${totalPrice.toFixed(2)}</h2>
-                <button className="btn">Pay</button>
+               { cart.length ?
+                <Link to='/dashboard/payment'>
+                <button disabled className="btn">Pay</button>
+                </Link>:
+                 <button className="btn">Pay</button>
+                 }
                 <button onClick={handleDeleteAll} className="btn btn-warning">Clear All</button>
             </div>
             <hr />

@@ -1,22 +1,22 @@
 import { Navigate, useLocation } from "react-router-dom";
-import useAdmin from "../hook/useAdmin";
 import useAuth from "../hook/useAuth";
+import useSeller from "../hook/useSeller";
 
 
-const AdminRoutes = ({children}) => {
-    const {user, loading} = useAuth();
-    const [isAdmin, isAdminLoading] = useAdmin();
+const SellerRoutes = ({children}) => {
+    const [user, loading] = useAuth();
+    const [isSeller, isSellerLoading] = useSeller();
     
     const location = useLocation();
 
     
-    if(loading || isAdminLoading){
+    if(loading || isSellerLoading){
         return <span className="loading loading-bars loading-lg"></span>
     }
-    if(user && isAdmin){
+    if(user && isSeller){
         return children;
     }
     return <Navigate to="/login" state={{from: location}} replace></Navigate>
 };
 
-export default AdminRoutes;
+export default SellerRoutes;

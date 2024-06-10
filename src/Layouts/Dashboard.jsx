@@ -5,7 +5,7 @@ import useAdmin from "../hook/useAdmin";
 
 const Dashboard = () => {
     // ToDo isAdmin
-    const isAdmin = useAdmin(); 
+    const [isAdmin] = useAdmin(); 
 
     return (
         <div>
@@ -21,20 +21,20 @@ const Dashboard = () => {
             <ul className="menu p-4 w-80 min-h-full bg-blue-500 text-base-content">
             {/* Sidebar content here */}
           
-            { isAdmin ? <>
-                <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
-            <li><NavLink to="/dashboard/allUser"> <FaUser></FaUser> All User</NavLink></li>
-            <li><NavLink to="/dashboard/addMenu">Add Item</NavLink></li>
-            <li><NavLink to="/dashboard/category">Manage Category</NavLink></li>
-            </>:
-            <>
-             <li><NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink></li>
-            
-            <li><NavLink to="/dashboard/addMenu">Add Item</NavLink></li>
-            
-            </>
-               
-            }
+            { isAdmin ? (
+                            <>
+                                <li><NavLink to="/"><FaHome /> User Home</NavLink></li>
+                                
+                                <li><NavLink to="/dashboard/addMenu">Add Item</NavLink></li>
+                                <li><NavLink to="/dashboard/category">Manage Category</NavLink></li>
+                            </>
+                        ) : (
+                            <>
+                            <li><NavLink to="/dashboard/allUser"><FaUser /> All Users</NavLink></li>
+                                <li><NavLink to="/"><FaHome /> User Home</NavLink></li>
+                                <li><NavLink to="/dashboard/cart"><FaShoppingCart /> My Cart</NavLink></li>
+                            </>
+                        )}
             <div className="divider"></div>
             <li><NavLink to="/dashboard/cart"><FaShoppingCart></FaShoppingCart> My Cart</NavLink></li>
             </ul>
