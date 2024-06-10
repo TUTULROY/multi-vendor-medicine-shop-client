@@ -56,7 +56,13 @@ const NavBer = () => {
 
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl uppercase font-bold"> <span className="text-green-500">T.R</span><span className="text-blue-500">Medicine Shop</span> </a>
+         <div className="">
+         
+         <a className="btn btn-ghost text-xl uppercase font-bold"> 
+         <img className="w-10 rounded-full" src="/public/logo.jpg" alt="" />
+          <span className="text-green-500">T.R</span><span className="text-blue-500">Medicine Shop</span> </a>
+         
+         </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

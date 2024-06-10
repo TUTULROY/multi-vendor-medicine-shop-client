@@ -5,6 +5,7 @@ const Footer = () => {
         <div>
         <footer className="footer p-10 bg-base-200 text-base-content">
   <aside>
+  <img className="w-1/5 rounded-full" src="/public/logo.jpg" alt="" />
   <p className="text-xl uppercase font-bold"> <span className="text-green-500">T.R</span> <span className="text-blue-500">Medicine Shop</span> </p>
     <p>T.R Industries Ltd.<br/>Providing reliable tech since 2021</p>
   </aside> 

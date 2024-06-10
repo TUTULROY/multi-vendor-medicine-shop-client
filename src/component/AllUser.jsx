@@ -14,11 +14,11 @@ const AllUser = () => {
             return res.data;
         }
     });
-    const handleMakeAdmin = user =>{
-        axiosSecure.patch(`/users/admin/${user._id}`)
+    const handleModifiedUser = (user , newRole) =>{
+        axiosSecure.patch(`/users/both/${user._id}`, {role: newRole})
         .then(res =>{
             console.log(res.data)
-            if(res.data.modifiedCount > 0 ){
+            if(res.data.modifiedCount > 0 || res.data.modifiedCount > 0 ){
                 refetch();
                 Swal.fire({
                     position: "top-end",
@@ -72,7 +72,7 @@ const AllUser = () => {
         <th>Name</th>
         <th>Email</th>
         <th>Role</th>
-        <th>Make me admin</th>
+        <th className="text-xl">Make me Modified</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -84,9 +84,15 @@ const AllUser = () => {
             <td>{item.email}</td>
             <td>{item.role}</td>
             <td>
-            { item.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(item)} className="btn bg-orange-500 btn-lg">
-            <FaUsers className="text-white text-2xl"></FaUsers>
-          </button>
+            { item.role === "admin" ? 'Admin' :
+            
+      <div>
+        <button onClick={() => handleModifiedUser(item, 'admin')} className="btn bg-orange-500  m-1"> <FaUsers className="text-white "></FaUsers> Admin </button>
+        <button onClick={() => handleModifiedUser(item, 'seller')} className="btn bg-green-500  m-1">
+        <FaUsers className="text-white "></FaUsers> Seller </button>
+            <button onClick={() => handleModifiedUser(item, 'user')} className="btn bg-blue-500  m-1">
+       <FaUsers className="text-white"></FaUsers> User</button>
+     </div>
           }
             </td>
             <td>
