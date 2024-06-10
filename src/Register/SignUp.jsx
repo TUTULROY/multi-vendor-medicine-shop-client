@@ -65,7 +65,7 @@ const SignUp = () => {
                   navigate(from);
                 }
               })
-                // console.log('user profile info updated')
+                
                
                 
             })

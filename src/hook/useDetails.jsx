@@ -5,7 +5,7 @@ const useDetails = (_id) => {
     const [item, setItem] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
-        fetch(`http://localhost:5000/menu/${_id}`)
+        fetch(`https://multi-vendor-medicine-shop-server.vercel.app/menu/${_id}`)
         .then(res => res.json())
         .then(data => {
         setItem(data);

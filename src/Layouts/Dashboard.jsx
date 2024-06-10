@@ -1,10 +1,11 @@
 import { FaHome, FaShoppingCart, FaUser } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hook/useAdmin";
 
 
 const Dashboard = () => {
     // ToDo isAdmin
-    const isAdmin = true; 
+    const isAdmin = useAdmin(); 
 
     return (
         <div>
@@ -21,16 +22,16 @@ const Dashboard = () => {
             {/* Sidebar content here */}
           
             { isAdmin ? <>
-                <li><NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink></li>
+                <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
             <li><NavLink to="/dashboard/allUser"> <FaUser></FaUser> All User</NavLink></li>
             <li><NavLink to="/dashboard/addMenu">Add Item</NavLink></li>
             <li><NavLink to="/dashboard/category">Manage Category</NavLink></li>
             </>:
             <>
              <li><NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink></li>
-            <li><NavLink to="/dashboard/allUser"> <FaUser></FaUser> All User</NavLink></li>
+            
             <li><NavLink to="/dashboard/addMenu">Add Item</NavLink></li>
-            <li><NavLink to="/dashboard/category">Manage Category</NavLink></li>
+            
             </>
                
             }

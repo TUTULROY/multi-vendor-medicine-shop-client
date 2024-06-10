@@ -5,7 +5,7 @@ const useCategory = () => {
     const [category, setCategory] =useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
-        fetch('http://localhost:5000/category')
+        fetch('https://multi-vendor-medicine-shop-server.vercel.app/category')
         .then(res => res.json())
         .then(data => {
         setCategory(data);

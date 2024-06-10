@@ -11,6 +11,8 @@ import Dashboard from "../Layouts/Dashboard";
 import Cart from "../Dashboard/Cart/Cart";
 import PrivateRoutes from "./PrivateRoutes";
 import AllUser from "../component/AllUser";
+import UpdateProfile from "../component/UpdateProfile";
+import AdminRoutes from "./AdminRoutes";
 
 
   const router = createBrowserRouter([
@@ -28,12 +30,16 @@ import AllUser from "../component/AllUser";
         },
        {
          path:"shop",
-         element:<Shops></Shops>
+         element:<PrivateRoutes><Shops></Shops></PrivateRoutes>
 
        },
        {
         path:'/detailsPage/:id',
         element:<MedicineDetails></MedicineDetails>
+       },
+       {
+        path:"update",
+        element:<UpdateProfile></UpdateProfile>
        }
       ]
      
@@ -56,7 +62,7 @@ import AllUser from "../component/AllUser";
         },
         {
           path:'allUser',
-          element:<AllUser></AllUser>
+          element:<AdminRoutes><AllUser></AllUser></AdminRoutes>
         }
       ]
     }
