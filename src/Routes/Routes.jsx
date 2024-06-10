@@ -10,6 +10,7 @@ import MedicineDetails from "../MedicineDetails/MedicineDetails";
 import Dashboard from "../Layouts/Dashboard";
 import Cart from "../Dashboard/Cart/Cart";
 import PrivateRoutes from "./PrivateRoutes";
+import AllUser from "../component/AllUser";
 
 
   const router = createBrowserRouter([
@@ -52,6 +53,10 @@ import PrivateRoutes from "./PrivateRoutes";
         {
           path:'cart',
           element:<Cart></Cart>
+        },
+        {
+          path:'allUser',
+          element:<AllUser></AllUser>
         }
       ]
     }

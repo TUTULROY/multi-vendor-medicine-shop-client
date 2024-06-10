@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../hook/useAxiosPublic";
 import useAuth from "../hook/useAuth";
 import Swal from "sweetalert2";
@@ -13,6 +13,10 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const SignUp = () => {
     const {createUser, updateUserProfile } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+      const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/" ;
         const {
             register,
             handleSubmit,
@@ -58,7 +62,7 @@ const SignUp = () => {
                       showConfirmButton: false,
                       timer: 1500
                   })
-
+                  navigate(from);
                 }
               })
                 // console.log('user profile info updated')

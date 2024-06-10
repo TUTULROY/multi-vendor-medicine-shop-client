@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import useCart from "../../hook/useCart";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import useAuth from "../../hook/useAuth";
+import { FaTrashAlt } from "react-icons/fa";
 
 const Cart = () => {
     const [cart, refetch] = useCart();
@@ -74,7 +75,7 @@ const Cart = () => {
                 <h2 className="text-4xl"> Items: {cart.length}</h2>
                 <h2 className="text-4xl"> Total Price: ${totalPrice.toFixed(2)}</h2>
                 <button className="btn">Pay</button>
-                <button onClick={handleDeleteAll} className="btn">Clear All</button>
+                <button onClick={handleDeleteAll} className="btn btn-warning">Clear All</button>
             </div>
             <hr />
             <div>
@@ -116,7 +117,9 @@ const Cart = () => {
             </td>
             <td>{item.company}</td>
             <th>
-              <button onClick={() => handleDelete(item._id)} className="btn btn-ghost btn-xs">Delete</button>
+              <button onClick={() => handleDelete(item._id)} className="btn btn-ghost btn-xs">
+                <FaTrashAlt></FaTrashAlt>
+              </button>
             </th>
             <th>
               <button className="btn btn-ghost btn-xs">Check Out</button>
