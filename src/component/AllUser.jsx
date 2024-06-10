@@ -96,7 +96,7 @@ const AllUser = () => {
           }
             </td>
             <td>
-            <button  onClick={() => handleDeleteUser(item._id)} className="btn btn-ghost btn-xs text-red-600">
+            <button  onClick={() => handleDeleteUser(item)} className="btn btn-ghost btn-xs text-red-600">
                 <FaTrashAlt></FaTrashAlt>
             </button>
             </td>

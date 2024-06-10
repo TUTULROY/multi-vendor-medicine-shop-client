@@ -5,8 +5,12 @@ import useAdmin from "../hook/useAdmin";
 
 const Dashboard = () => {
     // ToDo isAdmin
-    const [isAdmin] = useAdmin(); 
-
+    const [isAdmin, isAdminLoading] = useAdmin(); 
+    console.log(isAdmin)
+    if (isAdminLoading) {
+        return <span className="loading loading-bars loading-lg"></span>; // You can replace this with a spinner or a more sophisticated loading component
+    }
+ 
     return (
         <div>
                     <div className="drawer lg:drawer-open">
@@ -24,15 +28,15 @@ const Dashboard = () => {
             { isAdmin ? (
                             <>
                                 <li><NavLink to="/"><FaHome /> User Home</NavLink></li>
-                                
+                                <li><NavLink to="/dashboard/allUser"><FaUser /> All Users</NavLink></li>
                                 <li><NavLink to="/dashboard/addMenu">Add Item</NavLink></li>
                                 <li><NavLink to="/dashboard/category">Manage Category</NavLink></li>
                             </>
                         ) : (
                             <>
-                            <li><NavLink to="/dashboard/allUser"><FaUser /> All Users</NavLink></li>
+                             
                                 <li><NavLink to="/"><FaHome /> User Home</NavLink></li>
-                                <li><NavLink to="/dashboard/cart"><FaShoppingCart /> My Cart</NavLink></li>
+                                <li><NavLink to="/dashboard/allUser"><FaUser /> All Users</NavLink></li>
                             </>
                         )}
             <div className="divider"></div>
