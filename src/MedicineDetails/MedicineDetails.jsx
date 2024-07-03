@@ -22,7 +22,7 @@ const MedicineDetails = () => {
           <p><span className="text-xl font-semibold">Price: </span>${per_unit_price}</p>
           <p><span className="text-xl font-semibold">Discount: </span>{discount_percentage}%</p>
           <div className="card-actions justify-center">
-            <button className="btn btn-primary">Listen</button>
+            <button className="btn btn-primary">Home</button>
           </div>
         </div>
       </div>

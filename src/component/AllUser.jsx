@@ -5,7 +5,9 @@ import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 
+
 const AllUser = () => {
+  
     const axiosSecure = useAxiosSecure();
     const {data: users = [], refetch} = useQuery({
         queryKey: ['users'],
@@ -18,7 +20,23 @@ const AllUser = () => {
         axiosSecure.patch(`/users/both/${user._id}`, {role: newRole})
         .then(res =>{
             console.log(res.data)
-            if(res.data.modifiedCount > 0 || res.data.modifiedCount > 0 ){
+            if(res.data.modifiedCount > 0 ){
+                refetch();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${user.name} is an User Modified Now`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        })
+    }
+    const handleMakeAdmin = (user) =>{
+        axiosSecure.patch(`/users/admin/${user._id}`)
+        .then(res =>{
+            console.log(res.data)
+            if(res.data.modifiedCount > 0){
                 refetch();
                 Swal.fire({
                     position: "top-end",
@@ -73,6 +91,7 @@ const AllUser = () => {
         <th>Email</th>
         <th>Role</th>
         <th className="text-xl">Make me Modified</th>
+        <th className="text-xl">Make me Admin</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -84,17 +103,24 @@ const AllUser = () => {
             <td>{item.email}</td>
             <td>{item.role}</td>
             <td>
-            { item.role === "admin" ? 'Admin' :
-            
-      <div>
-        <button onClick={() => handleModifiedUser(item, 'admin')} className="btn bg-orange-500  m-1"> <FaUsers className="text-white "></FaUsers> Admin </button>
-        <button onClick={() => handleModifiedUser(item, 'seller')} className="btn bg-green-500  m-1">
-        <FaUsers className="text-white "></FaUsers> Seller </button>
-            <button onClick={() => handleModifiedUser(item, 'user')} className="btn bg-blue-500  m-1">
-       <FaUsers className="text-white"></FaUsers> User</button>
-     </div>
-          }
+           
+            {item.role !== "admin" && (
+                                        <div>
+          <button onClick={() => handleModifiedUser(item, 'seller')} className="btn bg-green-500 m-1">
+              <FaUsers className="text-white" /> Seller
+          </button>
+            <button onClick={() => handleModifiedUser(item, 'user')} className="btn bg-blue-500 m-1">
+                <FaUsers className="text-white" /> User
+            </button>
+                 </div>
+           )}
             </td>
+            <td>
+     { item.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(item)} className="btn bg-orange-500 btn-lg">
+            <FaUsers className="text-white text-2xl"></FaUsers>
+          </button>
+          }
+      </td>
             <td>
             <button  onClick={() => handleDeleteUser(item)} className="btn btn-ghost btn-xs text-red-600">
                 <FaTrashAlt></FaTrashAlt>

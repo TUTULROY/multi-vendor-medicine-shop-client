@@ -77,9 +77,9 @@ const Cart = () => {
                 <h2 className="text-4xl"> Total Price: ${totalPrice.toFixed(2)}</h2>
                { cart.length ?
                 <Link to='/dashboard/payment'>
-                <button disabled className="btn">Pay</button>
+                <button  className="btn btn-primary">Pay</button>
                 </Link>:
-                 <button className="btn">Pay</button>
+                 <button disabled className="btn">Pay</button>
                  }
                 <button onClick={handleDeleteAll} className="btn btn-warning">Clear All</button>
             </div>

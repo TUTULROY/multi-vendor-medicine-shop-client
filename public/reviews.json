@@ -1,0 +1,27 @@
+[
+    {
+      "name": "John Doe",
+      "details": "Great service, quick delivery!",
+      "rating": 5
+    },
+    {
+      "name": "Jane Smith",
+      "details": "Product arrived damaged, but customer service was excellent in resolving the issue.",
+      "rating": 4
+    },
+    {
+      "name": "Emily Johnson",
+      "details": "Good quality for the price.",
+      "rating": 4
+    },
+    {
+      "name": "Michael Brown",
+      "details": "Item was as described, very satisfied.",
+      "rating": 5
+    },
+    {
+      "name": "Sarah Wilson",
+      "details": "Shipping took longer than expected, but overall happy with the purchase.",
+      "rating": 3
+    }
+  ]

@@ -8,6 +8,7 @@ import useAxiosSecure from "../hook/useAxiosSecure";
 import useCart from "../hook/useCart";
 
 
+
 const Shops = () => {
     const {user} =useAuth();
     const [menu]= useMenu();
@@ -15,6 +16,7 @@ const Shops = () => {
     const axiosSecure = useAxiosSecure();
     const location = useLocation();
     const [, refetch] = useCart();
+    
     // console.log(menu);
     // const {_id, item_name, item_generic_name, image, category, company, per_unit_price} = menu;
     const handleAddToCart = (item) =>{
@@ -63,9 +65,22 @@ const Shops = () => {
               });
         }
     }
+    const handleSearch = e =>{
+        e.preventDefault();
+        const searchText= e.target.search.value;
+        console.log(searchText);
+        
+    }
     
     return (
         <div className="">
+            <div className="text-center">
+            <form onSubmit={handleSearch}>
+                <input className="input input-bordered" type="text" name="search" />
+                <input className="btn btn-outline" type="submit" value="Search" />
+            </form>
+            </div>
+            
            <div className="overflow-x-auto">
             <table className="table table-xs">
                 {/* head */}

@@ -1,8 +1,10 @@
+// import useAuth from "../hook/useAuth";
 
 
 
 
 const UpdateProfile = () => {
+  // const {user, UpdateProfile} = useAuth();
  
     return (
         <div>

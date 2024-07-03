@@ -14,6 +14,14 @@ import AllUser from "../component/AllUser";
 import UpdateProfile from "../component/UpdateProfile";
 
 import Payment from "../Dashboard/Payment/Payment";
+import AdminRoutes from "./AdminRoutes";
+import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
+import PaymentManagement from "../Dashboard/PaymentManagement/PaymentManagement";
+import SalesReport from "../Dashboard/SalesReport/SalesReport";
+import Invoice from "../component/Invoice/Invoice";
+import AddItems from "../Dashboard/AddItems/AddItems";
+import ManageMedicine from "../Dashboard/ManageMedicine/ManageMedicine";
+import AdminHome from "../Dashboard/AdminHome/AdminHome";
 
 
   const router = createBrowserRouter([
@@ -62,12 +70,40 @@ import Payment from "../Dashboard/Payment/Payment";
           element:<Cart></Cart>
         },
         {
+          path:'invoice',
+          element:<Invoice></Invoice>
+        },
+        {
           path:'payment',
           element:<Payment></Payment>
         },
         {
+          path: 'adminHome',
+          element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
+        },
+        {
+          path:'paymentHistory',
+          element:<PaymentHistory></PaymentHistory>
+        },
+        {
+          path:'paymentManagement',
+          element:<PaymentManagement></PaymentManagement>
+        },
+        {
           path:'allUser',
-          element:<AllUser></AllUser>
+          element:<AdminRoutes><AllUser></AllUser></AdminRoutes>
+        },
+        {
+          path:'salesReport',
+          element:<SalesReport></SalesReport>
+        },
+        {
+          path:'addItems',
+          element:<AddItems></AddItems>
+        },
+        {
+          path:'manageMedicine',
+          element:<ManageMedicine></ManageMedicine>
         }
       ]
     }

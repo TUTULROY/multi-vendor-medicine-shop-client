@@ -36,28 +36,31 @@ const AuthProvider = ({children}) => {
         return signOut(auth);
     }
 
-    useEffect(()=>{
-      const unsubscribe =  onAuthStateChanged(auth, currentUser =>{
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            if(currentUser){
-                const userInfo = {email: currentUser.email};
+            if (currentUser) {
+                // get token and store client
+                const userInfo = { email: currentUser.email };
                 axiosPublic.post('/jwt', userInfo)
-                .then(res =>{
-                    if(res.data.token){
-                        localStorage.setItem('access-token', res.data.token);
-                    }
-                })
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+                            setLoading(false);
+                        }
+                    })
             }
-            else{
-                localStorage.removeItem('access-token')
+            else {
+              
+                localStorage.removeItem('access-token');
+                setLoading(false);
             }
-            console.log('current user', currentUser);
-            setLoading(false);
+            
         });
-        return () =>{
+        return () => {
             return unsubscribe();
         }
-    },[axiosPublic])
+    }, [axiosPublic])
 
     const authInfo ={
         user,

@@ -18,9 +18,21 @@ const CategoryDetails = () => {
     const injection = menu.filter(item => item.category === 'Injection');
     const saline = menu.filter(item => item.category === 'Saline');
     const cream = menu.filter(item => item.category === 'Cream');
-    console.log(tablet)
+   
+    const handleSearch = e =>{
+      e.preventDefault();
+      const searchText= e.target.search.value;
+      console.log(searchText);
+      
+  }
     return (
         <div className="py-4">
+          <div className="text-center">
+            <form onSubmit={handleSearch}>
+                <input className="input input-bordered" type="text" name="search" />
+                <input className="btn btn-outline" type="submit" value="Search" />
+            </form>
+            </div>
            
             <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
             <TabList>
@@ -64,11 +76,11 @@ const CategoryDetails = () => {
   <table className="table table-zebra">
     {/* head */}
     <thead>
-      <tr>
+    <tr>
         <th>#</th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>Item Name</th>
+        <th>Item Generic Name</th>
+        <th>Category</th>
       </tr>
     </thead>
     <tbody>
@@ -91,11 +103,11 @@ const CategoryDetails = () => {
   <table className="table table-zebra">
     {/* head */}
     <thead>
-      <tr>
+    <tr>
         <th>#</th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>Item Name</th>
+        <th>Item Generic Name</th>
+        <th>Category</th>
       </tr>
     </thead>
     <tbody>
@@ -118,11 +130,11 @@ const CategoryDetails = () => {
   <table className="table table-zebra">
     {/* head */}
     <thead>
-      <tr>
+    <tr>
         <th>#</th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>Item Name</th>
+        <th>Item Generic Name</th>
+        <th>Category</th>
       </tr>
     </thead>
     <tbody>
@@ -145,11 +157,11 @@ const CategoryDetails = () => {
   <table className="table table-zebra">
     {/* head */}
     <thead>
-      <tr>
+    <tr>
         <th>#</th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>Item Name</th>
+        <th>Item Generic Name</th>
+        <th>Category</th>
       </tr>
     </thead>
     <tbody>
@@ -172,11 +184,11 @@ const CategoryDetails = () => {
   <table className="table table-zebra">
     {/* head */}
     <thead>
-      <tr>
+    <tr>
         <th>#</th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>Item Name</th>
+        <th>Item Generic Name</th>
+        <th>Category</th>
       </tr>
     </thead>
     <tbody>

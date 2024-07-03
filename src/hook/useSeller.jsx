@@ -4,14 +4,15 @@ import useAxiosSecure from "./useAxiosSecure";
 
 
 const useSeller = () => {
-    const {user} = useAuth();
+    const {user, loading} = useAuth();
     const axiosSecure = useAxiosSecure();
-    const {date: isSeller, isPending: isSellerLoading} = useQuery({
+    const {data: isSeller, isPending: isSellerLoading} = useQuery({
         queryKey: [user?.email, 'isSeller'],
+        enabled: !loading,
         queryFn: async() =>{
             const res = await axiosSecure.get(`/users/seller/${user.email}`);
-            // console.log(res.data);
-            return res.data?.admin;
+            console.log('API Response ', res.data);
+            return res.data?.seller;
         }
     })
     return [isSeller, isSellerLoading];

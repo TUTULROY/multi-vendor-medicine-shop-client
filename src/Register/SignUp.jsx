@@ -69,9 +69,7 @@ const SignUp = () => {
                
                 
             })
-            })
-
-              
+            })     
     };
     return (
         <>
